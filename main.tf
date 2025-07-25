@@ -1,10 +1,11 @@
-resource "aws_subnet" "jenkins_subnet" {
-  vpc_id                  = "vpc-0c943292e0a2f93cf"
-  cidr_block              = "10.0.101.0/24" # Changed from 10.0.1.0/24
-  availability_zone       = "us-east-1a"
-  map_public_ip_on_launch = true
+provider "aws" {
+  region = "ap-south-1"
+}
 
+resource "aws_instance" "demo" {
+  ami           = "ami-0c1a7f89451184c8b" # Amazon Linux 2 in Mumbai
+  instance_type = "t2.micro"
   tags = {
-    Name = "jenkins-subnet"
+    Name = "jenkins-instance"
   }
 }
